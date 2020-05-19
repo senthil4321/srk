@@ -6,7 +6,7 @@ private static Logger logger = LogManager.getLogger(Main.class)
 
 		System.out.println("Hello World");
 System.out.println("Hello World 2");
-	
+	logger.error("This is an error message");
 }
 
 }
