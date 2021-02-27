@@ -16,8 +16,10 @@ public class BitSetDemo {
 	bitSet.set(2);
 	bitSet.set(3);
 	bitSet.set(8);
+	bitSet.flip(1);
+	bitSet.clear(8);
 	logger.info("Hello " + bitSet.toString());
-	logger.debug("", bitSet.toString());
+	logger.debug("{}", bitSet.toString());
     }
 
 }
