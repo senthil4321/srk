@@ -6,7 +6,7 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 
-public class JaxbMarshalMain {
+public class MarshalMain {
     public static void main(String[] args) {
 	NameModel nameObject = new NameModel();
 	nameObject.setName("srk");

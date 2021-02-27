@@ -9,9 +9,9 @@ import javax.xml.bind.Unmarshaller;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class JaxbUnmarshalMain {
+public class UnmarshalMain {
 
-    private static final Logger LOGGER = LogManager.getLogger(JaxbUnmarshalMain.class);
+    private static final Logger LOGGER = LogManager.getLogger(UnmarshalMain.class);
 
     public static void main(String[] args) {
 
