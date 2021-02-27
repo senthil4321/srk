@@ -22,7 +22,8 @@ public class UnmarshalMain {
 
 	    Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 	    NameModel nameModel = (NameModel) jaxbUnmarshaller.unmarshal(file);
-	    System.out.println(nameModel.getName());
+	    System.out.println();
+	    LOGGER.debug("{}", nameModel.getName());
 
 	} catch (JAXBException e) {
 	    e.printStackTrace();
