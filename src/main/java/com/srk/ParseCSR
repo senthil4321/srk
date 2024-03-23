@@ -1,0 +1,46 @@
+import org.bouncycastle.asn1.x500.X500Name;
+import org.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
+import org.bouncycastle.pkcs.PKCS10CertificationRequest;
+import org.bouncycastle.openssl.PEMParser;
+import org.bouncycastle.asn1.x500.style.BCStyle;
+
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.Reader;
+
+public class ParseCSR {
+
+    public static void main(String[] args) {
+        // Path to the CSR file
+        String csrFilePath = "path/to/your/csr.pem";
+
+        // Parse the CSR
+        PKCS10CertificationRequest csr = parseCSR(csrFilePath);
+
+        if (csr != null) {
+            // Extract and print out some information
+            X500Name x500Name = csr.getSubject();
+            System.out.println("Common Name (CN): " + x500Name.getRDNs(BCStyle.CN)[0].getFirst().getValue());
+            System.out.println("Organization (O): " + x500Name.getRDNs(BCStyle.O)[0].getFirst().getValue());
+            System.out.println("Organizational Unit (OU): " + x500Name.getRDNs(BCStyle.OU)[0].getFirst().getValue());
+
+            // Get the Subject Public Key Info
+            SubjectPublicKeyInfo pkInfo = csr.getSubjectPublicKeyInfo();
+            // Additional operations can be done with the SubjectPublicKeyInfo if needed
+        }
+    }
+
+    public static PKCS10CertificationRequest parseCSR(String csrFilePath) {
+        try (Reader pemReader = new FileReader(csrFilePath);
+             PEMParser pemParser = new PEMParser(pemReader)) {
+            
+            Object parsedObj = pemParser.readObject();
+            if (parsedObj instanceof PKCS10CertificationRequest) {
+                return (PKCS10CertificationRequest) parsedObj;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+}
